@@ -1,0 +1,38 @@
+tslint to eslint
+================
+
+1. ng add @angular-eslint/schematics
+2. ng g @angular-eslint/schematics:convert-tslint-to-eslint {{YOUR_PROJECT_NAME_GOES_HERE}}
+
+3. in the .eslintrc.json file:
+
+"extends": [
+		"plugin:@angular-eslint/recommended",
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@angular-eslint/template/process-inline-templates"
+      ],
+  "rules": {
+	"@angular-eslint/component-selector": [
+	  "error",
+	  {
+		"type": "element",
+		"prefix": "app",
+		"style": "kebab-case"
+	  }
+	],
+	"@angular-eslint/directive-selector": [
+	  "error",
+	  {
+		"type": "attribute",
+		"prefix": "app",
+		"style": "camelCase"
+	  }
+	],
+	"@typescript-eslint/explicit-module-boundary-types": ["off"]
+  }
+
+
+4. delete tslint.json
+5. npm uninstall -D tslint codelyzer
+6. disable tslint in the editor
